@@ -1,0 +1,12 @@
+<div class="intoro">
+            <h5>診断結果</h5>
+        </div>
+        <div class="tweet-container">
+            <div class="tweet">
+                <% if @ais.question == "くんくんくん" %>
+                <%= link_to "ツイートへ", tweets_path %>
+                <% else %>
+はずれ！
+                <% end %>
+
+        </div>

@@ -1,0 +1,15 @@
+<h1>自分の題名</h1>
+<h3>一覧ページ</h3>
+<%= link_to "新規投稿へ", new_tweet_path %>
+<%= link_to "診断する", new_re_path %>
+<div class="tweets-container">
+<% if user_signed_in? %>
+  <%= link_to "マイページへ", user_path(current_user.id) %>
+<% end %>
+  <% @tweets.each do |t| %>
+    <div class="tweet">
+    <%= t.user.email %> 
+      <%= t.body %>
+    </div>
+  <% end %>
+</div>

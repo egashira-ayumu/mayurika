@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mayurika</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+  <div class="header-area">
+    <h1>ロゴ</h1>
+    <div class="hamburger">
+      <!-- ハンバーガーメニューの線 -->
+      <span></span>
+      <span></span>
+      <span></span>
+      <!-- /ハンバーガーメニューの線 -->
+    </div>
+  </div>
+  <ul class="slide-menu">
+  <% if user_signed_in? %>
+  <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+ <% else %>
+  <li><%= link_to "新規登録", new_user_registration_path %></li>
+  <li><%= link_to "ログイン", new_user_session_path %></li>
+ <% end %>
+    <li><%= link_to "トップページ", tweets_top_path %></li>
+    <li><%= link_to "マユリカとは", tweets_mayurikatoha_path %></li>
+    <li><%= link_to "マユリカのうなげろりん！！", tweets_unagerorin_path %></li>
+    <li><%= link_to "マユリカ'S friends", tweets_friends_path %></li>
+    <li><%= link_to "おすすめ回診断", res_path %></li>
+    <li><%= link_to "ファンの交流場", ais_path %></li>
+  </ul>
+</header>
+ <header>
+  <h1>マユリカ</h1>
+  <div class="header-list">
+   <ul>
+    <% if user_signed_in? %>
+     <li><%= button_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+     <li><%= link_to "新規登録", new_user_registration_path %></li>
+     <li><%= link_to "ログイン", new_user_session_path %></li>
+    <% end %>
+   </ul>
+   <%= link_to "", ais_path %>
+   <%= link_to "おすすめ回診断", ais_path %>
+  </div>
+ </header>
+ <main>
+  <%= yield %>
+ </main>
+</body>
+</html>
+<script>
+document.querySelector('.hamburger').addEventListener('click', function(){
+  this.classList.toggle('active');
+  document.querySelector('.slide-menu').classList.toggle('active');
+})
+</script>

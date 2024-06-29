@@ -1,0 +1,10 @@
+<%= form_for(@ai, class: 'form-horizontal', role: 'form') do |f| %>
+    <div class="container-sindan">
+        <div class="row">
+        <%= f.text_field :question, :size => 30 %>
+        </div>
+    </div>
+    <div class="sindanbotan">
+        <%= f.submit "post" %>
+    </div>
+<% end %>
